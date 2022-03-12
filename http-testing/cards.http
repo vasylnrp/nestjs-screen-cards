@@ -1,0 +1,28 @@
+GET http://localhost:3000/cards
+Content-Type: application/json
+
+{
+    "status": "New",
+    "text": "per"
+}
+
+###
+
+POST http://localhost:3000/cards
+Content-Type: application/json
+
+{
+    "text": "butter UP123PER",
+    "filePath": "this-is-test-2.jpg"
+}
+###
+
+@id = 8fbbb427-3ef2-4ead-beaf-3e2e4adb8ca0
+
+GET http://localhost:3000/cards/{{id}}
+###
+
+PATCH http://localhost:3000/cards/{{id}}/increase-view
+###
+
+DELETE http://localhost:3000/cards/{{id}}
