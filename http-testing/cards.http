@@ -1,6 +1,15 @@
-@auth = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXI1IiwiaWF0IjoxNjQ3MzczNDcxLCJleHAiOjE2NDczNzM3NzF9.0FQgLTxSz93iBY3nbnTofI9RUdxvfL6_dUts74oVRo0
+# @name signIn
+POST http://localhost:3000/auth/sign-in
+Content-Type: application/json
 
+{
+  "username": "user5",
+  "password": "SD2fsd23@34%"
+}
+###
+@auth = {{signIn.response.body.accessToken}}
 
+###
 GET http://localhost:3000/cards
 Content-Type: application/json
 Authorization: Bearer {{auth}}
