@@ -1,15 +1,19 @@
+@auth = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXI1IiwiaWF0IjoxNjQ3MzczNDcxLCJleHAiOjE2NDczNzM3NzF9.0FQgLTxSz93iBY3nbnTofI9RUdxvfL6_dUts74oVRo0
+
+
 GET http://localhost:3000/cards
 Content-Type: application/json
+Authorization: Bearer {{auth}}
+
 
 {
-    "status": "New",
-    "text": "per"
-}
+    "status": "New"}
 
 ###
 
 POST http://localhost:3000/cards
 Content-Type: application/json
+Authorization: Bearer {{auth}}
 
 {
     "text": "butter UP123PER",
@@ -17,12 +21,16 @@ Content-Type: application/json
 }
 ###
 
-@id = 8fbbb427-3ef2-4ead-beaf-3e2e4adb8ca0
+@id = 8aba35fd-5644-49d5-bc24-e9ee30830773
 
 GET http://localhost:3000/cards/{{id}}
+Authorization: Bearer {{auth}}
 ###
 
 PATCH http://localhost:3000/cards/{{id}}/increase-view
+Authorization: Bearer {{auth}}
+
 ###
 
 DELETE http://localhost:3000/cards/{{id}}
+Authorization: Bearer {{auth}}

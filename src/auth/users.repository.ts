@@ -19,13 +19,13 @@ export class UsersRepository extends Repository<User> {
     }
   }
 
-  async signIn(credentialsDto: AuthCredentialsDto): Promise<void> {
+  async signIn(credentialsDto: AuthCredentialsDto): Promise<User> {
     const user = await this.findOne({ username: credentialsDto.username });
     if (
       user &&
       (await bcrypt.compare(credentialsDto.password, user.password))
     ) {
-      return;
+      return user;
     } else {
       throw new UnauthorizedException();
     }

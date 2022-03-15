@@ -5,7 +5,6 @@ import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    CardsModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -15,7 +14,9 @@ import { AuthModule } from './auth/auth.module';
       database: 'screen_cards',
       autoLoadEntities: true,
       synchronize: true,
+      logging: true,
     }),
+    CardsModule,
     AuthModule,
   ],
 })
