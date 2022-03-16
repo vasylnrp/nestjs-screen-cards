@@ -1,3 +1,4 @@
+import { InternalServerErrorException } from '@nestjs/common';
 import { User } from 'src/auth/user.entity';
 import { EntityRepository, Repository } from 'typeorm';
 import { Card } from './card.entity';
@@ -25,6 +26,10 @@ export class CardsRepository extends Repository<Card> {
       query.andWhere('LOWER(card.text) LIKE :text', {
         text: `%${text.toLowerCase()}%`,
       });
+
+    if (text == 'intention') {
+      throw new InternalServerErrorException(`text ${text}`);
+    }
 
     return await query.getMany();
   }

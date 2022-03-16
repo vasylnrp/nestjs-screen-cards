@@ -16,7 +16,9 @@ Authorization: Bearer {{auth}}
 
 
 {
-    "status": "New"}
+  "status": "New",
+  "text": "intention"
+}
 
 ###
 
@@ -25,8 +27,8 @@ Content-Type: application/json
 Authorization: Bearer {{auth}}
 
 {
-    "text": "butter UP123PER",
-    "filePath": "this-is-test-2.jpg"
+  "text": "butter UP123PER",
+  "filePath": "this-is-test-2.jpg"
 }
 ###
 

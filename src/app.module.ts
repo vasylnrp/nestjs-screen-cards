@@ -14,7 +14,7 @@ import { AuthModule } from './auth/auth.module';
       database: 'screen_cards',
       autoLoadEntities: true,
       synchronize: true,
-      logging: true,
+      logging: false,
     }),
     CardsModule,
     AuthModule,

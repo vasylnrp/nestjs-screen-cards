@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Logger,
   Param,
   ParseUUIDPipe,
   Patch,
@@ -20,16 +21,26 @@ import { GetCardsFilterDto } from './dto/get-cards-filter.dto';
 @Controller('cards')
 @UseGuards(AuthGuard())
 export class CardsController {
-  constructor(private cardsService: CardsService) {}
+  private logger: Logger;
+
+  constructor(private cardsService: CardsService) {
+    this.logger = new Logger('Cards');
+  }
 
   @Get()
   async getCards(
     @Body() cardsFilter: GetCardsFilterDto,
     @GetUser() user: User,
   ): Promise<Card[]> {
-    // this.logger.verbose()
-    // console.log(user);
-    return await this.cardsService.getCards(cardsFilter, user);
+    this.logger.verbose(
+      `User ${user.username} retrieving cards ${JSON.stringify(cardsFilter)}`,
+    );
+    try {
+      return await this.cardsService.getCards(cardsFilter, user);
+    } catch (error) {
+      this.logger.error(error, error.stack);
+      throw error;
+    }
   }
 
   @Get(':id')
