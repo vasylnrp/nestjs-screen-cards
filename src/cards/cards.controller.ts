@@ -10,6 +10,7 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from 'src/auth/get-user.decorator';
 import { User } from 'src/auth/user.entity';
@@ -23,7 +24,10 @@ import { GetCardsFilterDto } from './dto/get-cards-filter.dto';
 export class CardsController {
   private logger: Logger;
 
-  constructor(private cardsService: CardsService) {
+  constructor(
+    private cardsService: CardsService,
+    private configService: ConfigService,
+  ) {
     this.logger = new Logger('Cards');
   }
 
@@ -35,6 +39,7 @@ export class CardsController {
     this.logger.verbose(
       `User ${user.username} retrieving cards ${JSON.stringify(cardsFilter)}`,
     );
+
     try {
       return await this.cardsService.getCards(cardsFilter, user);
     } catch (error) {

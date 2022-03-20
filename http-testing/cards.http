@@ -16,8 +16,7 @@ Authorization: Bearer {{auth}}
 
 
 {
-  "status": "New",
-  "text": "intention"
+  "status": "New"
 }
 
 ###
